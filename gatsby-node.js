@@ -41,6 +41,7 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, actions }) => {
       }
     }
   }
+  config.optimization.moduleIds = "named";
 
   actions.replaceWebpackConfig(config);
 };
