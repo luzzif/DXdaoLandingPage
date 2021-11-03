@@ -6,13 +6,10 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 exports.onCreateWebpackConfig = ({ stage, getConfig, actions }) => {
   if (stage !== "build-javascript") return;
 
-  const gitRevisionPlugin = new GitRevisionPlugin();
-  const shortCommitHash = gitRevisionPlugin.commithash().substring(0, 8);
-
   const config = getConfig();
 
-  config.output.filename = `static/js/[name].${shortCommitHash}.js`;
-  config.output.chunkFilename = `static/js/[name].${shortCommitHash}.chunk.js`;
+  config.output.filename = `static/js/[name].js`;
+  config.output.chunkFilename = `static/js/[name].chunk.js`;
 
   const correctPlugins = [];
   for (let i = 0; i < config.plugins.length; i++) {
@@ -22,7 +19,7 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, actions }) => {
     if (plugin instanceof MiniCssExtractPlugin)
       correctPlugins.push(
         new MiniCssExtractPlugin({
-          filename: `static/css/[name].${shortCommitHash}.css`,
+          filename: `static/css/[name].css`,
           chunkFilename: "static/css/[name].chunk.css",
         })
       );
@@ -44,7 +41,6 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, actions }) => {
       }
     }
   }
-  console.log(JSON.stringify(config.module.rules, undefined, 4));
 
   actions.replaceWebpackConfig(config);
 };
