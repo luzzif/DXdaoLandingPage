@@ -10,13 +10,14 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "cross-env GENERATE_SOURCEMAP=false gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
     "babel-plugin-styled-components": "^1.13.2",
+    "cross-env": "^7.0.3",
     "gatsby": "^3.9.1",
     "gatsby-plugin-humans-txt": "^1.1.4",
     "gatsby-plugin-image": "^1.11.0",
