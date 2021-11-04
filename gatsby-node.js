@@ -1,4 +1,3 @@
-const { GitRevisionPlugin } = require("git-revision-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { GenerateSW } = require("workbox-webpack-plugin");
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
@@ -19,8 +18,8 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, actions }) => {
     if (plugin instanceof MiniCssExtractPlugin)
       correctPlugins.push(
         new MiniCssExtractPlugin({
-          filename: `static/css/[name].css`,
-          chunkFilename: "static/css/[name].chunk.css",
+          filename: `static/css/[contenthash].css`,
+          chunkFilename: "static/css/[contenthash].chunk.css",
         })
       );
     else correctPlugins.push(plugin);
@@ -36,7 +35,16 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, actions }) => {
           config.module.rules[i].use[j].loader === require.resolve("url-loader")
         ) {
           config.module.rules[i].use[j].options.name =
-            "static/media/[name].[ext]";
+            "static/media/[contenthash].[ext]";
+        }
+        if (
+          config.module.rules[i].use[j].loader.includes(
+            "mini-css-extract-plugin"
+          )
+        ) {
+          console.log("HERE MUGU");
+          config.module.rules[i].use[j].options.filename =
+            "static/media/[contenthash].[ext]";
         }
       }
     }
