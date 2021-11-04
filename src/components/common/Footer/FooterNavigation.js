@@ -1,5 +1,4 @@
-import { Link } from "gatsby";
-import React, {Fragment} from "react"
+import React from "react"
 import styled from 'styled-components';
 import {breakpoints} from "./../../../utils/theme";
 import {footerNavigation, mobileFooterNavigation} from "./../../../utils/ui_constants";

@@ -12,7 +12,7 @@ export const footerNavigation = [
         items: [
             {
                 title: 'Vision',
-                url: '/vision',
+                url: '#/vision',
                 external: false
             },
             {

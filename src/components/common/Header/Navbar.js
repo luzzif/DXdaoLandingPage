@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import styled, {keyframes} from 'styled-components';
-import {Link} from 'gatsby';
+import {Link} from 'react-router-dom';
 import Logo from './../Logo/Logo';
 import {breakpoints} from './../../../utils/theme';
 import {mainNavigation, mobileNavMenu} from './../../../utils/ui_constants';

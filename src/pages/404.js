@@ -1,6 +1,6 @@
 import React, {useEffect} from "react"
 import styled, {ThemeProvider} from 'styled-components';
-import { Link } from "gatsby"
+import { Link } from "react-router-dom"
 import { Helmet } from 'react-helmet';
 import './../css/stylesheet.css';
 import Header from "../components/common/Header/Header";
